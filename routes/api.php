@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('employees', 'EmployeeController@getEmployee');
+// Route::get('employees', 'EmployeeController@getEmployee');
+// Route::get('employees', 'App\Http\Controllers\Api\EmployeeController@getEmployee');
+Route::get('/employees', [EmployeeController::class, 'getEmployee']);
+// or
+// Route::get('/employees', 'App\Http\Controllers\EmployeeController@getEmployee');
