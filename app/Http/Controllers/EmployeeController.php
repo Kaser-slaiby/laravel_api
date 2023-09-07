@@ -38,4 +38,14 @@ class EmployeeController extends Controller
         $employee->update($request->all());
         return response($employee, 200);
     }
+
+    public function deleteemployee(Request $request, $id)
+    {
+        $employee = Employee::find($id);
+        if (is_null($employee)) {
+            return response()->json(['message' => 'Employee not Found'], 404);
+        }
+        $employee->delete();
+        return response()->json(null, 204);
+    }
 }
