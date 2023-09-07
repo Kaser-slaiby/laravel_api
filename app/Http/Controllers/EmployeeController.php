@@ -11,4 +11,31 @@ class EmployeeController extends Controller
     {
         return response()->json(Employee::all(), 200);
     }
+
+    public function getEmployeeById($id)
+    {
+        $employee = Employee::find($id);
+
+        if (is_null($employee)) {
+            return response()->json(['message' => 'Employee not Found'], 404);
+        }
+        return response()->json($employee::find($id), 200);
+    }
+
+    public function addemployee(Request $request)
+    {
+        $employee = Employee::create($request->all());
+        return response($employee, 201);
+    }
+
+
+    public function updateemplyee(Request $request, $id)
+    {
+        $employee = Employee::find($id);
+        if (is_null($employee)) {
+            return response()->json(['message' => 'Employee not Found'], 404);
+        }
+        $employee->update($request->all());
+        return response($employee, 200);
+    }
 }
