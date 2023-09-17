@@ -44,3 +44,17 @@ Route::put('updateemployee/{id}', [EmployeeController::class, 'updateemplyee']);
 Route::delete('deleteemployee/{id}', [EmployeeController::class, 'deleteemployee']);
 
 ///Test v2.0
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+});
