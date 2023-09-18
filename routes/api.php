@@ -49,7 +49,7 @@ Route::delete('deleteemployee/{id}', [EmployeeController::class, 'deleteemployee
 Route::group([
 
     'middleware' => 'api',
-    'prefix' => 'auth'
+    // 'prefix' => 'auth'
 
 ], function () {
 
